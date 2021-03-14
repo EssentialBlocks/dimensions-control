@@ -8,12 +8,12 @@ class DimensionsControl extends Component {
 		right: this.props.right || 0,
 		bottom: this.props.bottom || 0,
 		left: this.props.left || 0,
-		isLinked: false,
+		isLinked: false
 	};
 
 	onButtonClick = () => this.setState({ isLinked: !this.state.isLinked });
 
-	onInputChange = (event) => {
+	onInputChange = event => {
 		let { top, right, bottom, left, isLinked } = this.state;
 		let { name, value } = event.target;
 
@@ -39,43 +39,41 @@ class DimensionsControl extends Component {
 				<div className="dimention-label">{this.props.label}</div>
 
 				<div className="input-container">
-					<div className="input-wrapper-group">
-						<div className="input-wrapper">
-							<input
-								type="number"
-								name="top"
-								value={top || 0}
-								onChange={this.onInputChange}
-							/>
-							<label className="dimentions-input-label">Top</label>
-						</div>
-						<div className="input-wrapper">
-							<input
-								type="number"
-								name="right"
-								value={right || 0}
-								onChange={this.onInputChange}
-							/>
-							<label className="dimentions-input-label">Right</label>
-						</div>
-						<div className="input-wrapper">
-							<input
-								type="number"
-								name="bottom"
-								value={bottom || 0}
-								onChange={this.onInputChange}
-							/>
-							<label className="dimentions-input-label">Bottom</label>
-						</div>
-						<div className="input-wrapper">
-							<input
-								type="number"
-								name="left"
-								value={left || 0}
-								onChange={this.onInputChange}
-							/>
-							<label className="dimentions-input-label">Left</label>
-						</div>
+					<div className="input-wrapper">
+						<input
+							type="number"
+							name="top"
+							value={top || 0}
+							onChange={this.onInputChange}
+						/>
+						<label className="dimentions-input-label">Top</label>
+					</div>
+					<div className="input-wrapper">
+						<input
+							type="number"
+							name="right"
+							value={right || 0}
+							onChange={this.onInputChange}
+						/>
+						<label className="dimentions-input-label">Right</label>
+					</div>
+					<div className="input-wrapper">
+						<input
+							type="number"
+							name="bottom"
+							value={bottom || 0}
+							onChange={this.onInputChange}
+						/>
+						<label className="dimentions-input-label">Bottom</label>
+					</div>
+					<div className="input-wrapper">
+						<input
+							type="number"
+							name="left"
+							value={left || 0}
+							onChange={this.onInputChange}
+						/>
+						<label className="dimentions-input-label">Left</label>
 					</div>
 					<button
 						className={`linked-btn components-button is-button dashicons dashicons-${
@@ -95,7 +93,7 @@ DimensionsControl.propTypes = {
 	right: PropTypes.number,
 	bottom: PropTypes.number,
 	left: PropTypes.number,
-	onChange: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired
 };
 
 export default DimensionsControl;
