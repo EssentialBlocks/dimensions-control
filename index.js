@@ -11,6 +11,23 @@ class DimensionsControl extends Component {
 		isLinked: false
 	};
 
+	// Follow the props when they change from outside (undo/redo, another block).
+	componentDidUpdate(prevProps) {
+		const sides = ["top", "right", "bottom", "left"];
+		if (sides.some(side => prevProps[side] !== this.props[side])) {
+			const next = {};
+			sides.forEach(side => {
+				const value = this.props[side] || 0;
+				if (value !== this.state[side]) {
+					next[side] = value;
+				}
+			});
+			if (Object.keys(next).length) {
+				this.setState(next);
+			}
+		}
+	}
+
 	onButtonClick = () => this.setState({ isLinked: !this.state.isLinked });
 
 	onInputChange = event => {
@@ -76,6 +93,7 @@ class DimensionsControl extends Component {
 						<label className="dimentions-input-label">Left</label>
 					</div>
 					<button
+						type="button"
 						className={`linked-btn components-button is-button dashicons dashicons-${
 							isLinked ? "admin-links is-primary" : "editor-unlink is-default"
 						}`}
